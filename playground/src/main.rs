@@ -8,7 +8,10 @@ fn main() {
     staging::print_vector_array(&random_numbers);
     println!("Random number: {random_array_value}");
     let search_index_result: usize = staging::binary_search(&random_numbers, &random_array_value);
-    println!("Index of random number: {search_index_result}");
+    println!("Base binary search index result: {search_index_result}");
+    let search_index_result: usize =
+        staging::binary_search_compare(&random_numbers, &random_array_value);
+    println!("std::cmp binary search index result: {search_index_result}");
 }
 
 #[cfg(test)]

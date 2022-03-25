@@ -33,7 +33,7 @@ pub fn binary_search(array: &Vec<u32>, target: &u32) -> usize {
     let mut maximum: usize = array.len() - 1;
 
     let calculate_middle = |min: usize, max: usize| {
-        return (max + min) / 2;
+        return min + (max - min) / 2;
     };
 
     while minimum <= maximum {
@@ -45,6 +45,22 @@ pub fn binary_search(array: &Vec<u32>, target: &u32) -> usize {
         } else {
             maximum = middle - 1;
         }
+    }
+    0usize
+}
+
+pub fn binary_search_compare(array: &Vec<u32>, target: &u32) -> usize {
+    use std::cmp::Ordering;
+
+    let (mut minimum, mut maximum): (usize, usize) = (0usize, array.len());
+
+    while minimum < maximum {
+        let middle = minimum + (maximum - minimum) / 2;
+        match array[middle].cmp(&target) {
+            Ordering::Equal => return middle,
+            Ordering::Less => minimum = middle + 1,
+            Ordering::Greater => maximum = middle,
+        };
     }
     0usize
 }
