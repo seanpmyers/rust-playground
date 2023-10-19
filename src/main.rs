@@ -1,3 +1,4 @@
+pub mod iteration;
 pub mod staging;
 
 fn main() {
@@ -12,6 +13,7 @@ fn main() {
     let search_index_result: usize =
         staging::binary_search_compare(&random_numbers, &random_array_value);
     println!("std::cmp binary search index result: {search_index_result}");
+    iteration::basic_loop();
 }
 
 #[cfg(test)]
